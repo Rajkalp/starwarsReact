@@ -11,27 +11,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "react-bootstrap/Spinner";
 import { useCookies } from "react-cookie";
 
-interface Data {
-  name: String;
-  height: String;
-  mass: String;
-  hair_color: String;
-  skin_color: String;
-  eye_color: String;
-  birth_year: String;
-  gender: String;
-  homeworld: String;
-  films: Array<Object>;
-  species: Array<Object>;
-  vehicles: Array<Object>;
-  starships: Array<Object>;
-  created: Data;
-  edited: Data;
-  url: String;
-}
+import Character from "../characterInterface";
 
 const Home = () => {
-  const [data, setData] = useState<Array<Data>>();
+  const [data, setData] = useState<Array<Character>>();
   const [pageNo, setPageNo] = useState<number>(1);
   const [loading, setLoading] = useState<Boolean>(true);
   const [fav, setFav] = useState(["test", 2]);
