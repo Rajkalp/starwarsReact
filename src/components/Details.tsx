@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { Navbar, Stack, Card, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/esm/Container";
-import CardHeader from "react-bootstrap/esm/CardHeader";
 import Character from "../characterInterface";
 
 interface Vehicle {
@@ -53,6 +52,7 @@ const Details = () => {
   return (
     <Container fluid>
       <Navbar
+        className="justify-content-center"
         bg="dark"
         style={{
           borderBottomColor: "#ffc107",
@@ -67,19 +67,190 @@ const Details = () => {
       </Navbar>
       <div className="container mt-3">
         <Row>
-          <Col style={{ borderRight: "2px solid red" }}>
-            <h1>{data?.name}</h1>
-            <h3>{data?.skin_color}</h3>
-            <h3>{data?.mass}</h3>
-            <h3>{data?.height}</h3>
-            <h3>{data?.gender}</h3>
-            <h3>{data?.birth_year}</h3>
+          <Col xs={4} style={{ borderRight: "2px solid red" }}>
+            <h1
+              style={{
+                fontSize: "50px",
+                fontWeight: "10",
+                fontStyle: "italic",
+                color: "red",
+              }}
+            >
+              {data?.name}
+            </h1>
           </Col>
           <Col>
-            <h1>vehicles: </h1>
-            {vehicle?.map((value, index) => (
-              <h1 key={index}>{value?.name}</h1>
-            ))}
+            <Row>
+              <Col>
+                <h3
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "10",
+                    fontStyle: "italic",
+                    color: "red",
+                  }}
+                >
+                  Skin Color:
+                </h3>
+              </Col>
+
+              <Col>
+                <h3
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "10",
+                    fontStyle: "italic",
+                    color: "red",
+                  }}
+                >
+                  {data?.skin_color}
+                </h3>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h3
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "10",
+                    fontStyle: "italic",
+                    color: "red",
+                  }}
+                >
+                  Mass:
+                </h3>
+              </Col>
+
+              <Col>
+                <h3
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "10",
+                    fontStyle: "italic",
+                    color: "red",
+                  }}
+                >
+                  {data?.mass}
+                </h3>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h3
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "10",
+                    fontStyle: "italic",
+                    color: "red",
+                  }}
+                >
+                  Height:
+                </h3>
+              </Col>
+
+              <Col>
+                <h3
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "10",
+                    fontStyle: "italic",
+                    color: "red",
+                  }}
+                >
+                  {data?.height}
+                </h3>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h3
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "10",
+                    fontStyle: "italic",
+                    color: "red",
+                  }}
+                >
+                  Gender:
+                </h3>
+              </Col>
+
+              <Col>
+                <h3
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "10",
+                    fontStyle: "italic",
+                    color: "red",
+                  }}
+                >
+                  {data?.gender}
+                </h3>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h3
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "10",
+                    fontStyle: "italic",
+                    color: "red",
+                  }}
+                >
+                  DOB:
+                </h3>
+              </Col>
+
+              <Col>
+                <h3
+                  style={{
+                    fontSize: "25px",
+                    fontWeight: "10",
+                    fontStyle: "italic",
+                    color: "red",
+                  }}
+                >
+                  {data?.birth_year}
+                </h3>
+              </Col>
+            </Row>
+
+            {vehicle && (
+              <Row>
+                <Col>
+                  <h1
+                    style={{
+                      fontSize: "25px",
+                      fontWeight: "10",
+                      fontStyle: "italic",
+                      color: "red",
+                    }}
+                  >
+                    vehicles:{" "}
+                  </h1>
+                </Col>
+
+                <Col>
+                  <div>
+                    {vehicle?.map((value, index) => (
+                      <span
+                        style={{
+                          fontSize: "25px",
+                          fontWeight: "10",
+                          fontStyle: "italic",
+                          color: "red",
+                        }}
+                        key={index}
+                      >
+                        {index + 1}.{value?.name}
+                        <br />
+                      </span>
+                    ))}
+                  </div>
+                </Col>
+              </Row>
+            )}
           </Col>
         </Row>
       </div>

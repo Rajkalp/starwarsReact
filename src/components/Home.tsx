@@ -44,6 +44,7 @@ const Home = () => {
   return (
     <Container fluid>
       <Navbar
+        className="justify-content-center"
         bg="dark"
         style={{
           borderBottomColor: "#ffc107",
@@ -105,7 +106,6 @@ const Home = () => {
             ))}
           </ListGroup>
         )}
-        <h1>{cookies.fav}</h1>
 
         <Stack className="mt-3 mb-3" direction="horizontal" gap={5}>
           <Button variant="warning" onClick={pagePrev}>
