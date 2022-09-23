@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Navbar, Stack, Card, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -37,16 +37,18 @@ const Details = () => {
       .then((json) => {
         setData(json);
         console.log("data", json);
-        json?.vehicles?.forEach((element: RequestInfo | URL) => {
-          fetch(element)
-            .then((res) => res.json())
-            .then((json) => {
-              setVehicles((vehicle) => [...vehicle, json]);
-              console.log("json", json);
-            });
-        });
       });
   }, []);
+
+  useEffect(() => {
+    data?.vehicles?.forEach((element: RequestInfo | URL) => {
+      fetch(element)
+        .then((res) => res.json())
+        .then((json) => {
+          setVehicles((vehicle) => [...vehicle, json]);
+        });
+    });
+  }, [data]);
 
   return (
     <Container fluid>
@@ -74,6 +76,7 @@ const Details = () => {
             <h3>{data?.birth_year}</h3>
           </Col>
           <Col>
+            <h1>vehicles: </h1>
             {vehicle?.map((value, index) => (
               <h1 key={index}>{value?.name}</h1>
             ))}
